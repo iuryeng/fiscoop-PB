@@ -1,0 +1,136 @@
+{% extends "base_generic.html" %}
+
+{% load my_filters %}
+
+{% block content %}
+
+<div class="container-fluid">
+  <!-- Título da Página -->
+  <h1 class="h3 mb-4 text-gray-800">{{ obra.nome }}</h1>
+
+  <div class="row">
+
+        <!-- Card de Investimento Total -->
+   
+        {% include "components/card.html" with title="Investimento Previsto" value=total_investido icon="dollar-sign" border_color="success" text_color="success" %}
+
+        <!-- Card de Total Executado-->
+        {% include "components/card.html" with title="Valor Executado" value=valor_parcial_total icon="dollar-sign" border_color="danger" text_color="danger" %}
+    <!-- Card de Porcentagem de Conclusão -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card {{obra.status|status_to_border_class}} shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold {{obra.status|status_to_text_class}} text-uppercase mb-1">Porcentagem de Conclusão</div>
+                        <div class="row no-gutters align-items-center">
+                            <div class="col-auto">
+                              <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">{{ conclusao }}</div>
+                            </div>
+                            <div class="col">
+                                <div class="progress progress-sm mr-2">
+                                  <div class="progress-bar {{ obra.status|status_to_class }}" role="progressbar" style="width: {{ conclusao }}" aria-valuenow="{{ conclusao_value }}" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+        {% include "components/card.html" with title="Número de Fiscalizações" value=fiscalizacoes icon="check-circle" border_color="info" text_color="info" %}
+  </div>
+
+  <!-- Painel de Detalhes -->
+  <div class="row">
+    <!-- Seção de Informações Básicas -->
+    <div class="col-lg-6">
+      <div class="card shadow mb-4">
+        <div class="card-header py-3">
+          <h6 class="m-0 font-weight-bold text-primary">Informações Básicas</h6>
+        </div>
+        <div class="card-body">
+          <p><strong>Empresa Encarregada:</strong> {{ obra.empresa_encarregada }}</p>
+          <p><strong>Edital:</strong> {{ obra.edital }}</p>
+          <p><strong>Lote:</strong> {{ obra.lote }}</p>
+          <p><strong>Regional:</strong> {{ obra.regional }}</p>
+          <p><strong>Município:</strong> {{ obra.municipio }}</p>
+          <p><strong>Status Atual da Obra:</strong> {{ obra.status }}</p>
+        </div>
+      </div>
+    </div>
+    
+   
+  <!-- Seção de Informações Adicionais -->
+<div class="col-lg-6">
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">Arquivos</h6>
+    </div>
+    <div class="card-body">
+
+      {# Botão Orçamento #}
+      {% if arquivos_map.ORCAMENTO %}
+          <a href="{{ arquivos_map.ORCAMENTO }}" class="btn btn-primary mb-2" target="_blank">
+              <i class="fas fa-file-download"></i> Planilha de Orçamento
+          </a>
+      {% else %}
+          <button class="btn btn-secondary mb-2" disabled>
+              <i class="fas fa-file-alt"></i> Orçamento Não Disponível
+          </button>
+      {% endif %}
+  
+      {# Botão Planta #}
+      {% if arquivos_map.PLANTA %}
+          <a href="{{ arquivos_map.PLANTA }}" class="btn btn-primary mb-2" target="_blank">
+              <i class="fas fa-file-download"></i> Planta da Obra
+          </a>
+      {% else %}
+          <button class="btn btn-secondary mb-2" disabled>
+              <i class="fas fa-file-alt"></i> Planta Não Disponível
+          </button>
+      {% endif %}
+  
+      {# Botão Cronograma #}
+      {% if arquivos_map.CRONOGRAMA %}
+          <a href="{{ arquivos_map.CRONOGRAMA }}" class="btn btn-primary mb-2" target="_blank">
+              <i class="fas fa-file-download"></i> Cronograma de Execução
+          </a>
+      {% else %}
+          <button class="btn btn-secondary mb-2" disabled>
+              <i class="fas fa-file-alt"></i> Cronograma Não Disponível
+          </button>
+      {% endif %}
+  
+  </div>
+  
+  
+  </div>
+  <div class="card shadow mb-4">
+    <div class="card-header py-3">
+      <h6 class="m-0 font-weight-bold text-primary">Geração de Relatórios</h6>
+    </div>
+    <div class="card-body">
+      <!-- Adicione aqui informações adicionais conforme necessário -->
+      <button type="button" class="btn btn-primary mb-2">Relatório de fiscalizacões</button>
+      <button type="button" class="btn btn-primary mb-2">Relatório de Problemas</button>
+      <button type="button" class="btn btn-primary mb-2">Relatórios de Viagens</button>
+      <button type="button" class="btn btn-primary mb-2">Relatório de Pagamento</button>
+    </div>
+  </div>
+</div>
+
+  <!-- Tabela de Serviços - Cisterna ou Passagem Molhada-->
+  <div class="row">
+    <div class="col-lg-12">
+      {% include "components/table.html" with title=servicos_table.title columns=servicos_table.columns data=servicos_table.data %}
+    </div>
+</div>
+
+</div>
+{% endblock %}

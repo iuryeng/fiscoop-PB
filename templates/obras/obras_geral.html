@@ -1,0 +1,39 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Visão Geral das Obras</h1>
+
+    <!-- Content Row -->
+    <div class="row">
+
+        <!-- Total de Obras Card -->
+        {% include "components/card.html" with title="Total de Obras" value=total_obras border_color="primary" text_color="primary" icon="building" %}
+
+        <!-- Obras em Execução Card -->
+        {% include "components/card.html" with title="Obras em Execução" value=obras_execucao border_color="warning" text_color="warning" icon="hard-hat" %}
+
+        <!-- Obras Concluídas Card -->
+        {% include "components/card.html" with title="Obras Concluídas" value=obras_concluidas border_color="success" text_color="success" icon="check-circle" %}
+
+        <!-- Obras Planejadas Card -->
+        {% include "components/card.html" with title="Obras Planejadas" value=obras_planejadas border_color="info" text_color="info" icon="calendar-alt" %}
+
+        <!-- Total de Investimentos Card -->
+        {% include "components/card.html" with title="Total de Investimentos" value=total_investimentos border_color="danger" text_color="danger" icon="dollar-sign" %}
+
+        <!-- Total de Municípios Impactados Card -->
+        {% include "components/card.html" with title="Total de Municípios Impactados" value=total_municipios border_color="success" text_color="success" icon="city" %}
+
+        <!-- Total de Problemas Reportados Card -->
+        {% include "components/card.html" with title="Obras Paralisadas" value=obras_paralisadas border_color="danger" text_color="danger" icon="exclamation-triangle" %}
+
+    </div>
+
+    <!-- Obras Table -->
+    {% include "components/table.html" with title=obras_table.title columns=obras_table.columns data=obras_table.data %}
+
+</div>
+{% endblock %}

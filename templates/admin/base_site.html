@@ -1,0 +1,52 @@
+{% extends "admin/base.html" %}
+{% load static %}
+
+{% block title %}{{ title }} | Administração de Fiscalização de Obras {% endblock %}
+
+{% block branding %}
+<h1 id="branding">
+    <a href="{% url 'admin:index' %}">
+        <img class="admin-logo" src="{% static 'img/logo-cooperar-1.svg' %}" alt="Logo do Projeto Cooperar"> Administração de Fiscalização de Obras
+    </a>  
+</h1>
+{% endblock %}
+
+{% block content_title %}
+    <h1>Gerencia de Sousa</h1>
+{% endblock %}
+
+{% block extrastyle %}
+<style>
+    #header {
+        background: #21614a;
+    }
+
+    .admin-logo {
+        height: 50px; /* Defina a altura que você preferir */
+        width: auto; /* Mantém a proporção da imagem */
+    }
+/* Para a página de login */
+body.login #branding a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Para a página de administração */
+body.dashboard #branding a {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+body.dashboard #branding a img.admin-logo {
+    margin-right: 20px;
+}
+
+
+</style>
+
+
+{% endblock %}

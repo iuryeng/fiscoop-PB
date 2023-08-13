@@ -1,0 +1,31 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Visão Geral das Associações</h1>
+
+    <!-- Content Row -->
+    <div class="row">
+
+        <!-- Total de Associações Card -->
+        {% include "components/card.html" with title="Total de Associações" value=total_associacoes border_color="primary" text_color="primary" icon="calendar" %}
+
+        <!-- Total de Municípios Card -->
+       
+
+        <!-- Total de Comunidades Beneficiadas Card -->
+        
+
+        <!-- Total de Beneficiários Card --> 
+        
+    </div>
+    <a href="/associacoes/download/" class="btn btn-primary">Download da lista completa</a>
+
+    <!-- Associações Table -->
+    {% include "components/table.html" with title=associacoes_table.title columns=associacoes_table.columns data=associacoes_table.data %}
+   
+
+</div>
+{% endblock %}

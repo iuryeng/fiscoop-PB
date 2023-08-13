@@ -1,0 +1,289 @@
+{
+    "cidades": [
+      {
+        "id": 1,
+        "nome": "São João do Rio do Peixe",
+        "comunidades": [
+          {
+            "id": 2,
+            "nome": "Juazeirinho"
+          },
+          {
+            "id": 3,
+            "nome": "Sitio Araças"
+          },
+          {
+            "id": 4,
+            "nome": "Sitio Umburana"
+          },
+          {
+            "id": 5,
+            "nome": "Sitio Emboscada"
+          },
+          {
+            "id": 6,
+            "nome": "Sitio Juazeirinho"
+          },
+          {
+            "id": 7,
+            "nome": "Sitio Barra do São Bento"
+          },
+          {
+            "id": 8,
+            "nome": "Sitio Junco"
+          },
+          {
+            "id": 9,
+            "nome": "Sitio Emboscada"
+          },
+          {
+            "id": 10,
+            "nome": "Sitio Barra do Bé"
+          },
+          {
+            "id": 11,
+            "nome": "Sitio Baixio"
+          },
+          {
+            "id": 12,
+            "nome": "Sítio Araçás"
+          },
+          {
+            "id": 13,
+            "nome": "Sitio Riachão do Gila"
+          },
+          {
+            "id": 14,
+            "nome": "Sitio Itaborai"
+          },
+          {
+            "id": 15,
+            "nome": "Sitio Cabra Assada"
+          },
+          {
+            "id": 16,
+            "nome": "Sítio Pau Darco"
+          },
+          {
+            "id": 17,
+            "nome": "Sítio Escurinho"
+          },
+          {
+            "id": 18,
+            "nome": "Sitio Lagoa Rasa"
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "nome": "Belém do Brejo do Cruz",
+        "comunidades": [
+          {
+            "id": 19,
+            "nome": "Gangorra dos Cababas"
+          },
+          {
+            "id": 20,
+            "nome": "Gangorra do Padre"
+          },
+          {
+            "id": 21,
+            "nome": "Gangorra dos Adalto"
+          },
+          {
+            "id": 22,
+            "nome": "Sítio Extrema"
+          },
+          {
+            "id": 23,
+            "nome": "Sítio Palha"
+          },
+          {
+            "id": 24,
+            "nome": "Sítio Canário"
+          },
+          {
+            "id": 25,
+            "nome": "Sitío Jatobá"
+          },
+          {
+            "id": 26,
+            "nome": "Timbaúba"
+          },
+          {
+            "id": 27,
+            "nome": "Serra de João do Vale"
+          },
+          {
+            "id": 28,
+            "nome": "Ramadinha"
+          },
+          {
+            "id": 29,
+            "nome": "Prado Monte"
+          },
+          {
+            "id": 30,
+            "nome": "Bom Jardim"
+          },
+          {
+            "id": 31,
+            "nome": "Cipauba"
+          },
+          {
+            "id": 32,
+            "nome": "Baliza"
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "nome": "São José de Piranhas",
+        "comunidades": [
+          {
+            "id": 33,
+            "nome": "Serra do Vital"
+          }
+        ]
+      },
+      {
+        "id": 6,
+        "nome": "Riacho dos Cavalos",
+        "comunidades": [
+          {
+            "id": 34,
+            "nome": "Lajes"
+          },
+          {
+            "id": 35,
+            "nome": "Baixa Verde"
+          },
+          {
+            "id": 36,
+            "nome": "Sítio Riacho da Serra"
+          },
+          {
+            "id": 37,
+            "nome": "Lajes"
+          },
+          {
+            "id": 38,
+            "nome": "Baixa Verde"
+          },
+          {
+            "id": 39,
+            "nome": "Sítio Riacho da Serra"
+          }
+        ]
+      },
+      {
+        "id": 7,
+        "nome": "Monte Horebe",
+        "comunidades": [
+          {
+            "id": 40,
+            "nome": "Lagoa do Recanto"
+          },
+          {
+            "id": 41,
+            "nome": "Queimadores"
+          },
+          {
+            "id": 42,
+            "nome": "Boa Vista"
+          },
+          {
+            "id": 43,
+            "nome": "Pires"
+          }
+        ]
+      },
+      {
+        "id": 8,
+        "nome": "Brejo do Cruz",
+        "comunidades": [
+          {
+            "id": 44,
+            "nome": "Sítio São Pedro"
+          },
+          {
+            "id": 45,
+            "nome": "Comunidade Baliza"
+          },
+          {
+            "id": 46,
+            "nome": "Sítio Passagem Limpa"
+          },
+          {
+            "id": 47,
+            "nome": "Sítio Triunfo"
+          },
+          {
+            "id": 48,
+            "nome": "Sítio Redondo I"
+          },
+          {
+            "id": 49,
+            "nome": "São Francisco do Sítio Redondo"
+          },
+          {
+            "id": 50,
+            "nome": "Sitio Sangrador"
+          },
+          {
+            "id": 51,
+            "nome": "Prado Monte"
+          },
+          {
+            "id": 52,
+            "nome": "Bom Jardim"
+          },
+          {
+            "id": 53,
+            "nome": "Cipauba"
+          },
+          {
+            "id": 54,
+            "nome": "Baliza"
+          }
+        ]
+      },
+      {
+        "id": 9,
+        "nome": "Cachoeira dos Índios",
+        "comunidades": [
+          {
+            "id": 55,
+            "nome": "Sítio Redondo I"
+          },
+          {
+            "id": 56,
+            "nome": "São Francisco do Sítio Redondo"
+          },
+          {
+            "id": 57,
+            "nome": "Sitio Sangrador"
+          }
+        ]
+      },
+      {
+        "id": 10,
+        "nome": "Catolé do Rocha",
+        "comunidades": [
+          {
+            "id": 58,
+            "nome": "Sítio Lagoa Rasa"
+          },
+          {
+            "id": 59,
+            "nome": "Sítio São Gonçalo"
+          },
+          {
+            "id": 60,
+            "nome": "Sítio Vaca Morta"
+          }
+        ]
+      }
+    ]
+  }
+  

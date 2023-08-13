@@ -1,0 +1,45 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+    <!-- Coloque aqui o conteúdo específico da página de obras -->
+    <div class="container-fluid">
+
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Gráficos de Obras</h1>
+                <a href="" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+                    <i class="fas fa-download fa-sm text-white-50"></i> 
+                    Gerar Relatório
+                </a>
+        
+        </div>
+
+    
+        <!-- Content Row -->
+        <div class="row">
+
+             <!-- Gráfico de Obras por Status -->
+             {% include 'obras/graficos/obras_por_status.html' %}
+    
+            <!-- Gráfico de Obras por Municípios -->
+            {% include 'obras/graficos/obras_por_municipio.html' %}
+            
+            <!-- Gráfico de Impacto por Municípios -->
+            {% include 'obras/graficos/impacto_por_municipio.html' %}
+
+            <!-- Gráfico de Investimento por Município -->
+            {% include 'obras/graficos/investimento_por_municipio.html' %}
+
+            <!-- Outros gráficos podem ser incluídos aqui -->
+
+        </div>
+
+        <!-- outros componentes... -->
+
+    </div>
+
+    
+    
+{% endblock %}
+
+

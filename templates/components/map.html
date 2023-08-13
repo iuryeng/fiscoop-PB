@@ -1,0 +1,165 @@
+{% load static %}
+<div class="container-fluid">
+<div class="row">
+    <!-- Map column -->
+    <div class="col-lg-6">
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">Mapa da Paraíba - Atuação da Regional de Sousa (Edital 01/2023 e 02/2023)</h6>
+            </div>
+            <div class="card-body">
+                <div id="map" style="height: 450px"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Cards column -->
+    <div class="col-lg-6">
+        <div class="row">
+            <div class="col-lg-12">
+                {% include "components/card.html" with title="Total de Beneficiários +" value=total_beneficiarios border_color="primary" text_color="primary" icon="users" %}
+            </div>
+        </div>
+
+       
+        <div class="row">
+            <div class="col-lg-12">
+                {% include "components/card.html" with title="Comunidades Impactadas" value=total_comunidades border_color="primary" text_color="primary" icon="house-user" %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                 <!-- Total de Cisternas Card -->
+                 {% include "components/card.html" with title="Cisternas" value=total_cisternas border_color="primary" text_color="primary" icon="water" %}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                {% include "components/card.html" with title="Passagens Molhadas" value=total_passagens_molhadas border_color="primary" text_color="primary" icon="road" %}
+            </div>
+        </div>
+
+        
+    </div>
+</div>
+</div>
+<!-- The rest of your script here... -->
+
+
+
+<script>
+    var map = L.map('map').setView([-7.123, -36.484], 8);
+    
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 19,
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors'
+    }).addTo(map);
+    
+    var municipiosGerencia = [
+        "Aguiar",
+        "Aparecida",
+        "Bernardino Batista",
+        "Bom Sucesso",
+        "Bonito de Santa Fé",
+        "Belém do Brejo do Cruz",
+        "Brejo do Cruz",
+        "Brejo dos Santos",
+        "Cachoeira dos Índios",
+        "Catolé do Rocha",
+        "Marizópolis",
+        "Monte Horebe",
+        "Nazarezinho",
+        "Riacho dos Cavalos",
+        "São João do Rio do Peixe",
+        "São José de Piranhas",
+        "Sousa",
+        "Vieirópolis",
+        "Cajazeiras",
+        "Mato Grosso",
+        "Jericó",
+        "Santa Helena",
+        "São José da Lagoa Tapada", 
+        "São Bento", 
+        "São José do Brejo do Cruz",
+        "Uiraúna",
+        "Poço de José de Moura",
+        "Triunfo",
+        "Pombal",
+    ]
+    
+    var municipiosObras = {{ municipios_com_obras|safe }};
+    
+    console.log(municipiosObras)
+    
+    // Define your style function
+    function style(feature) {
+        return {
+            fillColor: getColor(feature.properties.name),
+            fillOpacity: 0.5,
+            color: 'black',
+            weight: 1
+        };
+    }
+    
+    // Define your getColor function
+    function getColor(name) {
+        return municipiosGerencia.includes(name) ? 'blue' : 'green';
+    }
+    
+    // Define your onEachFeature function
+    function onEachFeature(feature, layer) {
+        layer.on({
+            mouseover: function(e) {
+                e.target.setStyle({fillColor: 'red'});
+                if (feature.properties && feature.properties.name) {
+                    e.target.bindPopup(feature.properties.name).openPopup();
+                }
+            },
+            mouseout: function(e) {
+                e.target.setStyle(style(feature));
+                e.target.closePopup();
+            }
+        });
+    
+        // If the municipality has works, add a marker to its centroid
+        if (municipiosObras.includes(feature.properties.name)) {
+            var centroid = turf.centroid(feature);
+            L.marker([centroid.geometry.coordinates[1], centroid.geometry.coordinates[0]]).addTo(map);
+        }
+    }
+    
+ // Create a control for the legend
+var legend = L.control({position: 'bottomright'});
+
+legend.onAdd = function (map) {
+    var div = L.DomUtil.create('div', 'info legend'),
+        labels = ['Regional de Sousa', 'Outras regionais'],
+        categories = ['#7977F4', 'green'];
+
+    for (var i = 0; i < categories.length; i++) {
+        div.innerHTML += 
+        '<i class="circle" style="background:' + categories[i] + '"></i> ' +
+        labels[i] + '<br>';
+    }
+    return div;
+};
+
+legend.addTo(map);
+
+legend.addTo(map);
+    
+    // Fetch GeoJSON data
+    fetch("{% static 'mapa/paraiba.json' %}")
+        .then(response => response.json())
+        .then(data => {
+            // Add GeoJSON layer to the map once the file is loaded
+            L.geoJson(data, {
+                style: style,
+                onEachFeature: onEachFeature
+            }).addTo(map);
+        })
+        .catch(error => console.error('Error:', error));
+    
+    </script>
+    
+  

@@ -1,0 +1,41 @@
+{% load static %}
+
+<!-- components/table.html -->
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">{{ title }}</h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                        {% for column in columns %}
+                            <th>{{ column }}</th>
+                        {% endfor %}
+                       
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for row in data %}
+                        <tr>
+                            {% for column, value in row.items %}
+                                {% if column == "Status" %}
+                                    <td>
+                                        <span class="badge {% if value == 'Em Execução' %}badge-warning{% elif value == 'Paralisado' %}badge-danger{% elif value == 'Não Iniciado' %}badge-info{% elif value == 'Concluído' %}badge-success{% endif %}">
+                                            {{ value }}
+                                        </span>
+                                    </td>
+                                {% else %}
+                                    <td>{{ value|safe }}</td>
+                                {% endif %}
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                </tbody>               
+                
+            </table>
+        </div>
+    </div>
+</div>
+

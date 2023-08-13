@@ -1,0 +1,27 @@
+{% extends "admin/change_list.html" %}
+{% load static %}
+
+{% block extrahead %}
+    {{ block.super }}
+    <!-- Inclua aqui qualquer CSS ou JS necessário para seus gráficos -->
+{% endblock %}
+
+{% block content %}
+    {{ block.super }}
+    <div class="container-fluid">
+        <!-- Page Heading -->
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Gráficos de Associações</h1>
+        </div>
+
+        <!-- Content Row -->
+        <div class="row">
+            <!-- Gráfico de Associacoes por municipios -->
+            {% include 'associacoes/graficos/associacoes_por_municipio.html' %}
+            <!-- Gráfico de Comunidade por Assiciacao -->
+            {% include 'associacoes/graficos/comunidade_por_associacao.html' %}
+            <!-- Gráfico de Beneficiários por Associação -->
+            {% include 'associacoes/graficos/beneficiarios_por_associacao.html' %}
+        </div>
+    </div>
+{% endblock %}
